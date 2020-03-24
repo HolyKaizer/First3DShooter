@@ -5,12 +5,19 @@ namespace Geekbrains
 {
     public sealed class Controllers : IInitialization
     {
+        #region Fields
+
         private readonly IExecute[] _executeControllers;
 
         public int Length => _executeControllers.Length;
 
         public IExecute this[int index] => _executeControllers[index];
-        
+
+        #endregion
+
+
+        #region ClassLifeCycle
+
         public Controllers()
         {
             IMotor motor = default;
@@ -36,6 +43,11 @@ namespace Geekbrains
             _executeControllers[2] = ServiceLocator.Resolve<InputController>();
         }
 
+        #endregion
+
+
+        #region IInitialization
+
         public void Initialization()
         {
             foreach (var controller in _executeControllers)
@@ -47,6 +59,9 @@ namespace Geekbrains
             }
             
             ServiceLocator.Resolve<InputController>().On();
+            ServiceLocator.Resolve<PlayerController>().On();
         }
+
+        #endregion
     }
 }

@@ -2,7 +2,14 @@
 {
     public abstract class BaseController
     {
+        #region Properties
+
         public bool IsActive { get; private set; }
+
+        #endregion
+
+
+        #region Methods
 
         public virtual void On()
         {
@@ -30,5 +37,7 @@
                 Off();
             }
         }
+
+        #endregion
     }
 }

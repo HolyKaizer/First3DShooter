@@ -4,24 +4,44 @@ using UnityEngine.UI;
 
 namespace Geekbrains
 {
+    [RequireComponent (typeof(Slider))]
     public sealed class FlashLightUi : MonoBehaviour
     {
-        private Text _text;
-        //todo image
+        #region Fields
+
+        private Slider _slider;
+
+        #endregion
+
+
+        #region UnityMethods
 
         private void Awake()
         {
-            _text = GetComponent<Text>();
+            _slider = GetComponent<Slider>();
+            _slider.value = _slider.maxValue;
         }
 
-        public float Text
+        #endregion
+
+
+        #region Properties
+
+        public float Slider
         {
-            set => _text.text = $"{value:0.0}";
+            set => _slider.value = value;
         }
+
+        #endregion
+
+
+        #region Methods
 
         public void SetActive(bool value)
         {
-            _text.gameObject.SetActive(value);
+            _slider.gameObject.SetActive(value);
         }
+
+        #endregion
     }
 }

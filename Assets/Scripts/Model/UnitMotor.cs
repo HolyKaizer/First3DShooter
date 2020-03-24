@@ -1,9 +1,12 @@
 ﻿using Geekbrains;
 using UnityEngine;
 
+
 public sealed class UnitMotor : IMotor
 {
-	private Transform _instance;
+    #region Fields
+
+    private Transform _instance;
 
 	private float _speedMove =10;
 	private float _jumpPower = 10;
@@ -20,10 +23,16 @@ public sealed class UnitMotor : IMotor
 	public float MaximumX = 90F;
 	public bool Smooth;
 	public float SmoothTime = 5f;
+
 	private Quaternion _characterTargetRot;
 	private Quaternion _cameraTargetRot;
 
-	public UnitMotor(CharacterController instance)
+    #endregion
+
+
+    #region ClassLifeCycle
+
+    public UnitMotor(CharacterController instance)
 	{
 		_instance = instance.transform;
 		_characterController = instance;
@@ -33,7 +42,12 @@ public sealed class UnitMotor : IMotor
 		_cameraTargetRot = _head.localRotation;
 	}
 
-	public void Move()
+    #endregion
+
+
+    #region Methods
+
+    public void Move()
 	{
 		CharecterMove();
 		GamingGravity();
@@ -102,4 +116,6 @@ public sealed class UnitMotor : IMotor
 
 		return q;
 	}
+
+    #endregion
 }

@@ -2,17 +2,32 @@
 {
 	public class PlayerController : BaseController, IExecute
 	{
-		private readonly IMotor _motor;
+        #region Fields
 
-		public PlayerController(IMotor motor)
+        private readonly IMotor _motor;
+
+        #endregion
+
+
+        #region ClassLifeCycle
+
+        public PlayerController(IMotor motor)
 		{
 			_motor = motor;
 		}
 
-		public void Execute()
+        #endregion
+
+
+        #region IExecute
+
+        public void Execute()
 		{
-			if(!IsActive) {return;}
+			if(!IsActive) return;
+
 			_motor.Move();
 		}
-	}
+
+        #endregion
+    }
 }
