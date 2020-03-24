@@ -6,6 +6,7 @@ namespace Geekbrains
     public sealed class GameController : MonoBehaviour
     {
         private Controllers _controllers;
+
         private void Start()
         {
             _controllers = new Controllers();

@@ -6,27 +6,34 @@ namespace Geekbrains
 {
     public static class ServiceLocatorMonoBehaviour
     {
-        private static Dictionary<object, object> _servicecontainer = null;
+        #region Fields
+
+        private static Dictionary<object, object> _serviceContainer = null;
+
+        #endregion
+
+
+        #region Methods
 
         public static T GetService<T>(bool createObjectIfNotFound = true) where T : Object
         {
-            if (_servicecontainer == null)
+            if (_serviceContainer == null)
             {
-                _servicecontainer = new Dictionary<object, object>();
+                _serviceContainer = new Dictionary<object, object>();
             }
 
-            if (!_servicecontainer.ContainsKey(typeof(T)))
+            if (!_serviceContainer.ContainsKey(typeof(T)))
             {
                 return FindService<T>(createObjectIfNotFound);
             }
 
-            var service = (T)_servicecontainer[typeof(T)];
+            var service = (T)_serviceContainer[typeof(T)];
             if (service != null)
             {
                 return service;
             }
 
-            _servicecontainer.Remove(typeof(T));
+            _serviceContainer.Remove(typeof(T));
             return FindService<T>(createObjectIfNotFound);
 
         }
@@ -36,14 +43,16 @@ namespace Geekbrains
             T type = Object.FindObjectOfType<T>();
             if (type != null)
             {
-                _servicecontainer.Add(typeof(T), type);
+                _serviceContainer.Add(typeof(T), type);
             }
             else if (createObjectIfNotFound)
             {
                 var go = new GameObject(typeof(T).Name, typeof(T));
-                _servicecontainer.Add(typeof(T), go.GetComponent<T>());
+                _serviceContainer.Add(typeof(T), go.GetComponent<T>());
             }
-            return (T)_servicecontainer[typeof(T)];
+            return (T)_serviceContainer[typeof(T)];
         }
+
+        #endregion
     }
 }
