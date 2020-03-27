@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
 
 
-namespace Geekbrains
+namespace FirstShooter
 {
     public sealed class FlashLightController : BaseController, IExecute, IInitialization
     {
         #region Fields
 
         private FlashLightModel _flashLightModel;
-        private FlashLightUi _flashLightUi;
         
         #endregion
 
@@ -18,7 +17,6 @@ namespace Geekbrains
         public void Initialization()
         {
             _flashLightModel = Object.FindObjectOfType<FlashLightModel>();
-            _flashLightUi = Object.FindObjectOfType<FlashLightUi>();
         }
 
         #endregion
@@ -33,7 +31,8 @@ namespace Geekbrains
             base.On();
 
             _flashLightModel.Switch(FlashLightActiveType.On);
-            _flashLightUi.SetActive(true);
+            _uiInterface.LightUiBar.SetActive(true);
+            _uiInterface.LightUiText.SetActive(true);
         }
 
         public override void Off()
@@ -42,7 +41,8 @@ namespace Geekbrains
             base.Off();
 
             _flashLightModel.Switch(FlashLightActiveType.Off);
-            _flashLightUi.SetActive(false);
+            _uiInterface.LightUiBar.SetActive(false);
+            _uiInterface.LightUiText.SetActive(false);
         }
 
         #endregion
@@ -60,7 +60,8 @@ namespace Geekbrains
             _flashLightModel.RotateObject();
             if (_flashLightModel.EditBatteryCharge())
             {
-                _flashLightUi.Slider = _flashLightModel.BatteryChargeCurrent;
+                _uiInterface.LightUiBar.Slider = _flashLightModel.BatteryChargeCurrent;
+                _uiInterface.LightUiText.Text = _flashLightModel.BatteryChargeCurrent;
             }
             else
             {

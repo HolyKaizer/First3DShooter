@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Geekbrains
+namespace FirstShooter
 {
     public class Test : MonoBehaviour
     {

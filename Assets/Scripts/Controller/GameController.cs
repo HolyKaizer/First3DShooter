@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-namespace Geekbrains
+namespace FirstShooter
 {
     public sealed class GameController : MonoBehaviour
     {

@@ -1,4 +1,4 @@
-﻿namespace Geekbrains
+﻿namespace FirstShooter
 {
 	public class PlayerController : BaseController, IExecute
 	{
@@ -11,7 +11,7 @@
 
         #region ClassLifeCycle
 
-        public PlayerController(IMotor motor)
+        public PlayerController(IMotor motor) : base()
 		{
 			_motor = motor;
 		}

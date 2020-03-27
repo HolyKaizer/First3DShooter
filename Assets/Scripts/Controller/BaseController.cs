@@ -1,10 +1,27 @@
-﻿namespace Geekbrains
+﻿namespace FirstShooter
 {
     public abstract class BaseController
     {
+        #region Fields
+
+        protected UiInterface _uiInterface;
+
+        #endregion
+
+
         #region Properties
 
         public bool IsActive { get; private set; }
+
+        #endregion
+
+
+        #region ClassLifecycle
+
+        protected BaseController()
+        {
+            _uiInterface = new UiInterface();
+        }
 
         #endregion
 
@@ -26,7 +43,7 @@
             IsActive = false;
         }
 
-        public void Switch()
+        public void Switch(params BaseObjectScene[] obj)
         {
             if (!IsActive)
             {

@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-namespace Geekbrains
+namespace FirstShooter
 {
     public sealed class FlashLightModel : BaseObjectScene
     {

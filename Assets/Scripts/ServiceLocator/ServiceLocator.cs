@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 
-namespace Geekbrains
+namespace FirstShooter
 {
     public static class ServiceLocator
     {

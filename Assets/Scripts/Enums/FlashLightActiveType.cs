@@ -1,4 +1,4 @@
-﻿namespace Geekbrains
+﻿namespace FirstShooter
 {
     public enum FlashLightActiveType
     {

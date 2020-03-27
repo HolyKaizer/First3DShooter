@@ -2,13 +2,13 @@
 using UnityEngine;
 
 
-namespace Geekbrains
+namespace FirstShooter
 {
     public static class ServiceLocatorMonoBehaviour
     {
         #region Fields
 
-        private static Dictionary<object, object> _serviceContainer = null;
+        private static Dictionary<System.Type, object> _serviceContainer = null;
 
         #endregion
 
@@ -19,7 +19,7 @@ namespace Geekbrains
         {
             if (_serviceContainer == null)
             {
-                _serviceContainer = new Dictionary<object, object>();
+                _serviceContainer = new Dictionary<System.Type, object>();
             }
 
             if (!_serviceContainer.ContainsKey(typeof(T)))

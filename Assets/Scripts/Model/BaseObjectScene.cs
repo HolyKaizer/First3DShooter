@@ -1,28 +1,29 @@
 ﻿using UnityEngine;
 
 
-namespace Geekbrains
+namespace FirstShooter
 {
     public abstract class BaseObjectScene : MonoBehaviour
     {
         #region Fields
 
-        private int _layer;
         private Color _color;
         private Vector3 _position;
         private Quaternion _rotation;
         private Vector3 _scale;
         private GameObject _instanceObject;
+        private int _layer;
+        private bool _isVisible;
 
         #endregion
 
 
         #region Properties
 
-        public Rigidbody Rigidbody { get; private set; }
-        public Transform Transform { get; private set; }
-        public Material Material { get; private set; }
-        public string Name { get; private set; }
+        [HideInInspector] public Rigidbody Rigidbody { get; private set; }
+        [HideInInspector] public Transform Transform { get; private set; }
+        [HideInInspector] public Material Material { get; private set; }
+        [HideInInspector] public string Name { get; private set; }
 
         public int Layer
         {
@@ -59,7 +60,7 @@ namespace Geekbrains
 
         public Color Color
         {
-            get { return _color; }
+            get => _color;
 
             set
             {
@@ -118,6 +119,23 @@ namespace Geekbrains
             }
         }
 
+        public bool IsVisible
+        {
+            get => _isVisible;
+
+            set
+            {
+                _isVisible = value;
+                RendererSetActive(transform);
+                if (transform.childCount <= 0) return;
+
+                foreach (Transform t in transform)
+                {
+                    RendererSetActive(t);
+                }
+            }
+        }
+
         #endregion
 
 
@@ -157,7 +175,7 @@ namespace Geekbrains
 
         private void AskColor(Transform obj, Color color)
         {
-            var objMaterial = obj.gameObject.GetComponent<Material>();
+            var objMaterial = obj.gameObject.GetComponent<Renderer>().material;
             if(objMaterial != null)
             {
                 objMaterial.color = color;
@@ -168,6 +186,14 @@ namespace Geekbrains
             foreach (Transform child in obj)
             {
                 AskColor(child, color);
+            }
+        }
+
+        private void RendererSetActive(Transform renderer)
+        {
+            if (renderer.gameObject.TryGetComponent<Renderer>(out var component))
+            {
+                component.enabled = _isVisible;
             }
         }
 
