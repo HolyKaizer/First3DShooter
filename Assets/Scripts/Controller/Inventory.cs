@@ -42,7 +42,10 @@ namespace FirstShooter
 
         #region Methods
 
-        //todo Добавить функционал
+        public Weapon GetWeapon(int weaponIndex = 0)
+        {
+            return Weapons[weaponIndex];
+        }
 
         public void RemoveWeapon(Weapon weapon)
         {

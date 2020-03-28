@@ -31,8 +31,8 @@ namespace FirstShooter
             base.On();
 
             _flashLightModel.Switch(FlashLightActiveType.On);
-            _uiInterface.LightUiBar.SetActive(true);
-            _uiInterface.LightUiText.SetActive(true);
+            UiInterface.LightUiBar.SetActive(true);
+            UiInterface.LightUiText.SetActive(true);
         }
 
         public override void Off()
@@ -41,8 +41,8 @@ namespace FirstShooter
             base.Off();
 
             _flashLightModel.Switch(FlashLightActiveType.Off);
-            _uiInterface.LightUiBar.SetActive(false);
-            _uiInterface.LightUiText.SetActive(false);
+            UiInterface.LightUiBar.SetActive(false);
+            UiInterface.LightUiText.SetActive(false);
         }
 
         #endregion
@@ -60,8 +60,8 @@ namespace FirstShooter
             _flashLightModel.RotateObject();
             if (_flashLightModel.EditBatteryCharge())
             {
-                _uiInterface.LightUiBar.Slider = _flashLightModel.BatteryChargeCurrent;
-                _uiInterface.LightUiText.Text = _flashLightModel.BatteryChargeCurrent;
+                UiInterface.LightUiBar.Slider = _flashLightModel.BatteryChargeCurrent;
+                UiInterface.LightUiText.Text = _flashLightModel.BatteryChargeCurrent;
             }
             else
             {

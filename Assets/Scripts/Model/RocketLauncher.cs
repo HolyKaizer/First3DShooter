@@ -1,6 +1,9 @@
-﻿namespace FirstShooter
+﻿using UnityEngine;
+
+
+namespace FirstShooter
 {
-    public sealed class Gun : Weapon
+    public sealed class RocketLauncher : Weapon
     {
         #region Methods
 
@@ -10,7 +13,7 @@
             if (Clip.CountAmmunition <= 0) return;
 
             var temAmmunition = _ammunitionPool.GetAvailableObject() as Ammunition;
-            
+
             temAmmunition.Position = _barrel.position;
             temAmmunition.Rotation = _barrel.rotation;
             temAmmunition.SetActive(true);

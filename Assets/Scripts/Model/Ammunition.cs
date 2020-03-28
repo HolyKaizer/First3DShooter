@@ -7,12 +7,13 @@ namespace FirstShooter
     {
         #region Fields
 
-        [SerializeField] private float _timeToDestruct = 10;
-        [SerializeField] private float _baseDamage = 10;
- 
-        protected float _curDamage; // todo доделать свой урон
-        private float _lossOfDamageAtTime = 0.2f;
-        private ITimeRemaining _timeRemaining;
+        [SerializeField] private float _timeToDestruct = 5.0f;
+        [SerializeField] private float _baseDamage = 10.0f;
+
+        protected float _curDamage;
+
+        private ITimeRemaining _destroyTimeRemaining;
+        private Vector3 _curForce;
 
         public AmmunitionType Type = AmmunitionType.Bullet;
 
@@ -24,14 +25,14 @@ namespace FirstShooter
         protected override void Awake()
         {
             base.Awake();
-            _curDamage = _baseDamage;
+            _destroyTimeRemaining = new TimeRemaining(DestroyAmmunition, _timeToDestruct);
         }
 
-        private void Start()
+        protected virtual void OnEnable()
         {
-            Destroy(gameObject, _timeToDestruct);
-            _timeRemaining = new TimeRemaining(LossOfDamage, 1.0f, true);
-            _timeRemaining.AddTimeRemaining();
+            _curDamage = _baseDamage;
+
+            _destroyTimeRemaining.AddTimeRemaining();
         }
 
         #endregion
@@ -39,22 +40,22 @@ namespace FirstShooter
 
         #region Methods
 
-        public void AddForce(Vector3 dir)
+        public void AddForce(Vector3 force)
         {
             if (!Rigidbody) return;
-            Rigidbody.AddForce(dir);
+            _curForce = force;
+            Rigidbody.AddForce(_curForce);
         }
 
-        private void LossOfDamage()
+        public virtual void DestroyAmmunition()
         {
-            _curDamage -= _lossOfDamageAtTime;
-        }
+            _destroyTimeRemaining.RemoveTimeRemaining();
+            
+            if (Rigidbody) Rigidbody.velocity = Vector3.zero;
 
-        protected void DestroyAmmunition()
-        {
-            Destroy(gameObject);
-            _timeRemaining.RemoveTimeRemaining();
-            // Вернуть в пул
+            Position = Vector3.zero;
+            Rotation = Quaternion.identity;
+            SetActive(false);
         }
 
         #endregion

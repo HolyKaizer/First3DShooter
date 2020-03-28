@@ -43,7 +43,7 @@ namespace FirstShooter
             }
             else if(!_nullString)
             {
-                //todo UI selected object String Empty
+                UiInterface.SelectionObjMessageUi.Text = string.Empty;
                 _nullString = true;
                 _dedicateObj = null;
                 _isSelectedObj = false;
@@ -82,12 +82,12 @@ namespace FirstShooter
             _selectedObj = obj.GetComponent<ISelectedObj>();
             if(_selectedObj != null)
             {
-                _uiInterface.SelectionObjMessageUi.Text = _selectedObj.GetMessage();
+                UiInterface.SelectionObjMessageUi.Text = _selectedObj.GetMessage();
                 _isSelectedObj = true;
             }
             else
             {
-                _uiInterface.SelectionObjMessageUi.Text = string.Empty;
+                UiInterface.SelectionObjMessageUi.Text = string.Empty;
                 _isSelectedObj = false;
             }
             _dedicateObj = obj;

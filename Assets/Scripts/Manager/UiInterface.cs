@@ -3,21 +3,21 @@
 
 namespace FirstShooter
 {
-    public class UiInterface
+    public static class UiInterface
     {
         #region Fields
 
-        private FlashLightUiText _flashLightUiText;
-        private FlashLightUiBar _flashLightUiBar;
-        private WeaponUiText _weaponUiText;
-        private SelectionObjMessageUi _selectionObjMessageUi;
+        private static FlashLightUiText _flashLightUiText;
+        private static FlashLightUiBar _flashLightUiBar;
+        private static WeaponUiText _weaponUiText;
+        private static SelectionObjMessageUi _selectionObjMessageUi;
 
         #endregion
 
 
         #region Properties
 
-        public FlashLightUiText LightUiText
+        public static FlashLightUiText LightUiText
         {
             get
             {
@@ -29,7 +29,7 @@ namespace FirstShooter
             }
         }
 
-        public FlashLightUiBar LightUiBar
+        public static FlashLightUiBar LightUiBar
         {
             get
             {
@@ -41,7 +41,7 @@ namespace FirstShooter
             }
         }
 
-        public WeaponUiText WeaponUiText
+        public static WeaponUiText WeaponUiText
         {
             get
             {
@@ -53,7 +53,7 @@ namespace FirstShooter
             }
         }
 
-        public SelectionObjMessageUi SelectionObjMessageUi
+        public static SelectionObjMessageUi SelectionObjMessageUi
         {
             get
             {

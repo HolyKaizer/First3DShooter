@@ -11,7 +11,6 @@ namespace FirstShooter
         private Vector3 _position;
         private Quaternion _rotation;
         private Vector3 _scale;
-        private GameObject _instanceObject;
         private int _layer;
         private bool _isVisible;
 
@@ -38,23 +37,13 @@ namespace FirstShooter
 
         public Vector3 Position
         {
-            get
-            {
-                if (_instanceObject != null)
-                {
-                    _position = Transform.position;
-                }
-                return _position;
-            }
+            get => Transform.position;
 
             set
             {
                 _position = value;
 
-                if (_instanceObject != null)
-                {
-                    Transform.position = _position;
-                }
+                Transform.position = _position;
             }
         }
 
@@ -76,46 +65,24 @@ namespace FirstShooter
 
         public Quaternion Rotation
         {
-            get
-            {
-                if (_instanceObject != null)
-                {
-                    _rotation = Transform.rotation;
-                }
-
-                return _rotation;
-            }
+            get => Transform.rotation;
 
             set
             {
                 _rotation = value;
-
-                if(_instanceObject != null)
-                {
-                    Transform.rotation = _rotation;
-                }
+                Transform.rotation = _rotation;
             }
         }
 
         public Vector3 Scale
         {
-            get
-            {
-                if (_instanceObject != null)
-                {
-                    _scale = Transform.localScale;
-                }
-                return _scale;
-            }
+            get => Transform.localScale;
 
             set
             {
                 _scale = value;
 
-                if(_instanceObject != null)
-                {
-                    Transform.localScale = _scale;
-                }
+                Transform.localScale = _scale;
             }
         }
 
@@ -136,6 +103,12 @@ namespace FirstShooter
             }
         }
 
+        public bool ActiveInHierarchy
+        {
+            get => gameObject.activeInHierarchy;
+            
+        }
+
         #endregion
 
 
@@ -143,8 +116,7 @@ namespace FirstShooter
 
         protected virtual void Awake()
         {
-            _instanceObject = gameObject;
-            Name = _instanceObject.name;
+            Name = gameObject.name;
 
             var renderer = GetComponent<Renderer>();
             if (renderer != null)
@@ -160,6 +132,11 @@ namespace FirstShooter
 
 
         #region Methods
+
+        public void SetActive(bool value)
+        {
+            gameObject.SetActive(value);
+        }
 
         private void AskLayer(Transform obj, int layer)
         {

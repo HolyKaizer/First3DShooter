@@ -1,9 +1,10 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
+using UnityEngine;
+
 
 namespace FirstShooter
 {
-    public sealed class Aim : BaseAim
+    public sealed class AnotherAim : BaseAim
     {
         #region Fields
 
@@ -17,7 +18,6 @@ namespace FirstShooter
         public override void CollisionEnter(InfoCollision info)
         {
             base.CollisionEnter(info);
-
 
             if (Hp > 0)
             {

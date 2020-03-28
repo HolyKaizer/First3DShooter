@@ -20,8 +20,8 @@
             base.On(_weapon);
 
             _weapon.IsVisible = true;
-            _uiInterface.WeaponUiText.SetActive(true);
-            _uiInterface.WeaponUiText.ShowData(_weapon.Clip.CountAmmunition, _weapon.CountClip);
+            UiInterface.WeaponUiText.SetActive(true);
+            UiInterface.WeaponUiText.ShowData(_weapon.Clip.CountAmmunition, _weapon.CountClip);
         }
 
         public override void Off()
@@ -31,19 +31,19 @@
 
             _weapon.IsVisible = false;
             _weapon = null;
-            _uiInterface.WeaponUiText.SetActive(false);
+            UiInterface.WeaponUiText.SetActive(false);
         }
 
         public void Fire()
         {
             _weapon.Fire();
-            _uiInterface.WeaponUiText.ShowData(_weapon.Clip.CountAmmunition, _weapon.CountClip);
+            UiInterface.WeaponUiText.ShowData(_weapon.Clip.CountAmmunition, _weapon.CountClip);
         }
 
         public void ReloadClip()
         {
             _weapon.ReloadClip();
-            _uiInterface.WeaponUiText.ShowData(_weapon.Clip.CountAmmunition, _weapon.CountClip);
+            UiInterface.WeaponUiText.ShowData(_weapon.Clip.CountAmmunition, _weapon.CountClip);
         }
 
         #endregion

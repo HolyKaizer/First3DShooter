@@ -3,9 +3,16 @@
 
 namespace FirstShooter
 {
-    public sealed class Wall : BaseObjectScene
+    public sealed class Wall : BaseObjectScene, ISelectedObj
     {
+        #region ISelectedObj
 
+        public string GetMessage()
+        {
+            return gameObject.name;
+        }
+
+        #endregion
     }
 }
 

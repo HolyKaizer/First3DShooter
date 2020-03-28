@@ -2,26 +2,9 @@
 {
     public abstract class BaseController
     {
-        #region Fields
-
-        protected UiInterface _uiInterface;
-
-        #endregion
-
-
         #region Properties
 
         public bool IsActive { get; private set; }
-
-        #endregion
-
-
-        #region ClassLifecycle
-
-        protected BaseController()
-        {
-            _uiInterface = new UiInterface();
-        }
 
         #endregion
 

@@ -59,6 +59,8 @@ namespace FirstShooter
 
         public void Initialization()
         {
+            UiInterface.LightUiBar.SetActive(false);
+
             foreach (var controller in _executeControllers)
             {
                 if (controller is IInitialization initialization)

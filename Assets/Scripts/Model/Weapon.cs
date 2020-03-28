@@ -18,13 +18,14 @@ namespace FirstShooter
 		[SerializeField] private int _countClip = 5;
 
 		[SerializeField] protected Transform _barrel;
-		[SerializeField] protected float _force = 999;
+		[SerializeField] protected float _force = 1000.0f;
 		[SerializeField] protected float _rechergeTime = 0.2f;
 
 		private Queue<Clip> _clips = new Queue<Clip>();
+		protected ObjectPool _ammunitionPool;
 
 		protected bool _isReady = true;
-		protected ITimeRemaining _timeRemaining;
+		protected ITimeRemaining _attackRateTimeRemaining;
 
         #endregion
 
@@ -40,8 +41,10 @@ namespace FirstShooter
 
         private void Start()
 		{
-			_timeRemaining = new TimeRemaining(ReadyShoot, _rechergeTime);
+			_ammunitionPool = new ObjectPool(Ammunition, _maxCountAmmunition, true);
 
+			_attackRateTimeRemaining = new TimeRemaining(ReadyShoot, _rechergeTime);
+            
 			for (var i = 0; i <= _countClip; i++)
 			{
 				AddClip(new Clip { CountAmmunition =  _maxCountAmmunition });
