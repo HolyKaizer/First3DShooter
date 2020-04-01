@@ -53,7 +53,6 @@ namespace FirstShooter
             
             if (Rigidbody) Rigidbody.velocity = Vector3.zero;
 
-            Position = Vector3.zero;
             Rotation = Quaternion.identity;
             SetActive(false);
         }

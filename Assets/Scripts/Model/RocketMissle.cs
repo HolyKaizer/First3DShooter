@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 
 
 namespace FirstShooter
@@ -7,8 +8,8 @@ namespace FirstShooter
     {
         #region Fields
 
-        [SerializeField] private float _explosionRadius;
-        [SerializeField] private LayerMask _damagableMask;
+        [SerializeField] private float _explosionRadius = 0.0f;
+        [SerializeField] private LayerMask _damagableMask = 0;
 
         #endregion
 
@@ -17,8 +18,6 @@ namespace FirstShooter
 
         private void OnCollisionEnter(Collision collision)
         {
-            Explode();
-
             DestroyAmmunition();
         }
 
@@ -29,9 +28,10 @@ namespace FirstShooter
 
         private void Explode()
         {
-            var collisionObjs = Physics.OverlapSphere(Position, _explosionRadius);
+            Collider[] collisionObjs = new Collider[100];
 
-            for (int i = 0; i < collisionObjs.Length; i++)
+            var countOfOverlap = Physics.OverlapSphereNonAlloc(Position, _explosionRadius, collisionObjs, _damagableMask);
+            for (int i = 0; i < countOfOverlap; i++)
             {
                 if (collisionObjs[i].gameObject.TryGetComponent<ICollision>(out var collisionObj))
                 {
