@@ -10,6 +10,7 @@ namespace FirstShooter
         private KeyCode _activeFlashLight = KeyCode.F;
         private KeyCode _cancel = KeyCode.Escape;
         private KeyCode _reloadClip = KeyCode.R;
+        private KeyCode _catchObject = KeyCode.E;
         private int _mouseButton = (int)MouseButton.LeftButton;
         private float _mouseScrollScale = 0.1f;
 
@@ -34,6 +35,11 @@ namespace FirstShooter
             if (Input.GetKeyDown(_activeFlashLight))
             {
                 ServiceLocator.Resolve<FlashLightController>().Switch(ServiceLocator.Resolve<Inventory>().FlashLight);
+            }
+
+            if (Input.GetKeyDown(_catchObject))
+            {
+                ServiceLocator.Resolve<SelectionController>().CatchObject();
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha1) || (Mathf.Abs(Input.mouseScrollDelta.y * _mouseScrollScale) >= 0.1f))
@@ -76,7 +82,7 @@ namespace FirstShooter
         private void SelectWeapon(int i)
         {
             ServiceLocator.Resolve<WeaponController>().Off();
-            var tempWeapon = ServiceLocator.Resolve<Inventory>().GetWeapon(i); //todo инкапсулировать
+            var tempWeapon = ServiceLocator.Resolve<Inventory>().GetWeapon(i); 
             if (tempWeapon != null)
             {
                 ServiceLocator.Resolve<WeaponController>().On(tempWeapon);
