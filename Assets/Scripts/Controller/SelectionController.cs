@@ -10,14 +10,13 @@ namespace FirstShooter
         private readonly Camera _mainCamera;
         private readonly Vector2 _center;
         private readonly float _dedicateDistance = 20.0f;
-        private readonly LayerMask _selectableLayerMask;
 
         private GameObject _dedicateObj;
         private ISelectedObj _selectedObj;
-        private ICatchaleObj _catchedObj;
+        private readonly LayerMask _selectableLayerMask;
+
         private bool _nullString = false;
         private bool _isSelectedObj = false;
-        private bool _isCurrentlyCarryObj = false;
 
         #endregion
 
@@ -98,31 +97,6 @@ namespace FirstShooter
                 _isSelectedObj = false;
             }
             _dedicateObj = obj;
-        }
-
-        public void CatchObject()
-        {
-            if (_isCurrentlyCarryObj)
-            {
-                ThrowObject();
-                return;
-            }
-            if (!_isSelectedObj) return;
-
-            _catchedObj = _dedicateObj.GetComponent<ICatchaleObj>();
-
-            if (_catchedObj != null)
-            {
-                _isCurrentlyCarryObj = true;
-                _catchedObj.CatchObject();
-            }
-        }
-
-        private void ThrowObject()
-        {
-            _isCurrentlyCarryObj = false;
-            _catchedObj.ThrowObject();
-            _catchedObj = null;
         }
 
         #endregion

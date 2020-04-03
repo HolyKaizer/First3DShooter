@@ -39,7 +39,7 @@ namespace FirstShooter
 
             if (Input.GetKeyDown(_catchObject))
             {
-                ServiceLocator.Resolve<SelectionController>().CatchObject();
+                ServiceLocator.Resolve<CatchController>().CatchObject();
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha1) || (Mathf.Abs(Input.mouseScrollDelta.y * _mouseScrollScale) >= 0.1f))
