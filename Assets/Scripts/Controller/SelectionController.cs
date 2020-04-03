@@ -13,8 +13,10 @@ namespace FirstShooter
 
         private GameObject _dedicateObj;
         private ISelectedObj _selectedObj;
-        private bool _nullString;
-        private bool _isSelectedObj;
+        private readonly LayerMask _selectableLayerMask;
+
+        private bool _nullString = false;
+        private bool _isSelectedObj = false;
 
         #endregion
 
@@ -25,6 +27,7 @@ namespace FirstShooter
         {
             _mainCamera = Camera.main;
             _center = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
+            _selectableLayerMask = ServiceLocatorMonoBehaviour.GetService<GameController>().GameplayData.SelecatbleLayerMask;
         }
 
         #endregion
@@ -36,7 +39,10 @@ namespace FirstShooter
         {
             if (!IsActive) return;
 
-            if(Physics.Raycast(_mainCamera.ScreenPointToRay(_center), out var hit, _dedicateDistance))
+            if(Physics.Raycast(_mainCamera.ScreenPointToRay(_center),
+                                out var hit,
+                                _dedicateDistance,
+                                _selectableLayerMask))
             {
                 SelectObject(hit.collider.gameObject);
                 _nullString = false;

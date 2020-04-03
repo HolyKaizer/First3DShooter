@@ -38,6 +38,7 @@ namespace FirstShooter
             ServiceLocator.SetService(new WeaponController());
             ServiceLocator.SetService(new InputController());
             ServiceLocator.SetService(new SelectionController());
+            ServiceLocator.SetService(new CatchController());
 
             _executeControllers = new IExecute[5];
 
@@ -50,6 +51,7 @@ namespace FirstShooter
             _executeControllers[3] = ServiceLocator.Resolve<FlashLightController>();
 
             _executeControllers[4] = ServiceLocator.Resolve<SelectionController>();
+
         }
 
         #endregion
@@ -71,6 +73,7 @@ namespace FirstShooter
 
             ServiceLocator.Resolve<Inventory>().Initialization();
             ServiceLocator.Resolve<InputController>().On();
+            ServiceLocator.Resolve<CatchController>().On();
             ServiceLocator.Resolve<SelectionController>().On();
             ServiceLocator.Resolve<PlayerController>().On();
         }

@@ -5,7 +5,16 @@ namespace FirstShooter
 {
     public sealed class GameController : MonoBehaviour
     {
+        #region Fields
+
+        public GameplayData GameplayData;
+
         private Controllers _controllers;
+
+        #endregion
+
+
+        #region UnityMethods
 
         private void Start()
         {
@@ -20,5 +29,7 @@ namespace FirstShooter
                 _controllers[i].Execute();
             }
         }
+
+        #endregion
     }
 }
