@@ -55,11 +55,7 @@ namespace FirstShooter
             {
                 _color = value;
 
-                if(Material != null)
-                {
-                    Material.color = _color;
-                    AskColor(Transform, _color);
-                }
+                AskColor(Transform, _color);
             }
         }
 
@@ -151,11 +147,13 @@ namespace FirstShooter
         }
 
         private void AskColor(Transform obj, Color color)
-        {
-            var objMaterial = obj.gameObject.GetComponent<Renderer>().material;
-            if(objMaterial != null)
+        { 
+            if(obj.gameObject.TryGetComponent<Renderer>(out var renderer))
             {
-                objMaterial.color = color;
+                foreach(var objMaterial in renderer.materials)
+                {
+                    objMaterial.color = color;
+                }
             }
 
             if (obj.childCount <= 0) return;

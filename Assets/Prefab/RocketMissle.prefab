@@ -50,7 +50,7 @@ MonoBehaviour:
   _timeToDestruct: 3
   _baseDamage: 45
   Type: 2
-  _explosionRadius: 2.2
+  _explosionRadius: 3
   _damagableMask:
     serializedVersion: 2
     m_Bits: 512

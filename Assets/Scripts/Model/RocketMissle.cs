@@ -18,6 +18,8 @@ namespace FirstShooter
 
         private void OnCollisionEnter(Collision collision)
         {
+            Explode(collision);
+
             DestroyAmmunition();
         }
 
@@ -26,7 +28,7 @@ namespace FirstShooter
 
         #region Methods
 
-        private void Explode()
+        private void Explode(Collision fromCollision)
         {
             Collider[] collisionObjs = new Collider[100];
 
@@ -35,16 +37,10 @@ namespace FirstShooter
             {
                 if (collisionObjs[i].gameObject.TryGetComponent<ICollision>(out var collisionObj))
                 {
-                    collisionObj.CollisionEnter(new InfoCollision(_curDamage));
+                    var direction = transform.position - collisionObjs[i].transform.position;
+                    collisionObj.CollisionEnter(new InfoCollision(_curDamage, fromCollision.GetContact(0), transform, direction));
                 }
             }
-        }
-
-        public override void DestroyAmmunition()
-        {
-            base.DestroyAmmunition();
-
-            Explode();
         }
 
         #endregion 

@@ -35,7 +35,8 @@ namespace FirstShooter
 
             if (collisionObj != null)
             {
-                collisionObj.CollisionEnter(new InfoCollision(_curDamage, Rigidbody.velocity));
+                collisionObj.CollisionEnter(new InfoCollision(_curDamage, collision.contacts[0], transform, Rigidbody.velocity));
+                
             }
 
             DestroyAmmunition();

@@ -39,8 +39,9 @@ namespace FirstShooter
             ServiceLocator.SetService(new InputController());
             ServiceLocator.SetService(new SelectionController());
             ServiceLocator.SetService(new CatchController());
+            ServiceLocator.SetService(new BotController());
 
-            _executeControllers = new IExecute[5];
+            _executeControllers = new IExecute[6];
 
             _executeControllers[0] = ServiceLocator.Resolve<TimeRemainingController>();
 
@@ -52,6 +53,7 @@ namespace FirstShooter
 
             _executeControllers[4] = ServiceLocator.Resolve<SelectionController>();
 
+            _executeControllers[5] = ServiceLocator.Resolve<BotController>();
         }
 
         #endregion
@@ -76,6 +78,7 @@ namespace FirstShooter
             ServiceLocator.Resolve<CatchController>().On();
             ServiceLocator.Resolve<SelectionController>().On();
             ServiceLocator.Resolve<PlayerController>().On();
+            ServiceLocator.Resolve<BotController>().On();
         }
 
         #endregion
