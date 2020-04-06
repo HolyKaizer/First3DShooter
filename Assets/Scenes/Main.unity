@@ -3035,6 +3035,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 100
+  _timeToDestroy: 10
 --- !u!65 &863500538061361035
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3447,6 +3448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 100
+  _timeToDestroy: 10
 --- !u!1 &863500538457311627
 GameObject:
   m_ObjectHideFlags: 0
@@ -3870,6 +3872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 100
+  _timeToDestroy: 10
 --- !u!1 &863500539109851081
 GameObject:
   m_ObjectHideFlags: 0
@@ -3950,6 +3953,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 100
+  _timeToDestroy: 10
 --- !u!65 &863500539191873379
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4078,6 +4082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 100
+  _timeToDestroy: 10
 --- !u!1 &863500539611284645
 GameObject:
   m_ObjectHideFlags: 0
@@ -4166,6 +4171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 100
+  _timeToDestroy: 10
 --- !u!65 &863500539717999453
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4242,6 +4248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 100
+  _timeToDestroy: 10
 --- !u!1 &863500539786128659
 GameObject:
   m_ObjectHideFlags: 0

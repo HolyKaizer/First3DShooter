@@ -8,11 +8,11 @@ namespace FirstShooter
     {
         #region Fields
 
-        [SerializeField] private Transform _playerCatchTransform;
+        [SerializeField] private Transform _playerCatchTransform = null;
 
-        private Transform _oldParent;
-        private int _selectableLayer;
-        private int _nothingLayer;
+        private Transform _oldParent = null;
+        private int _selectableLayer = 0;
+        private int _nothingLayer = 0;
 
         #endregion
 

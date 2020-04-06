@@ -113,7 +113,7 @@ namespace FirstShooter
         protected virtual void Awake()
         {
             Name = gameObject.name;
-
+            
             var renderer = GetComponent<Renderer>();
             if (renderer != null)
             {

@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 namespace FirstShooter
 {
-    [RequireComponent (typeof(NavMeshAgent))]
+    [RequireComponent(typeof(NavMeshAgent))]
     public sealed class Bot : BaseObjectScene, IExecute
     {
         #region Fields
@@ -14,7 +14,7 @@ namespace FirstShooter
 
         public float Hp = 100;
         public Vision Vision;
-        public Weapon Weapon; //todo с разным оружием
+        public Weapon Weapon; //TODO: with different weapons
 
         [SerializeField] private float _timeToDestroy = 10.0f;
 
@@ -106,7 +106,7 @@ namespace FirstShooter
 
             if (StateBot != StateBot.Detected)
             {
-                if(!Agent.hasPath)
+                if (!Agent.hasPath)
                 {
                     if (StateBot != StateBot.Inspection)
                     {
@@ -118,16 +118,16 @@ namespace FirstShooter
                         }
                         else
                         {
-                            if( (_point - transform.position).sqrMagnitude <= 1.0f)
+                            if ((_point - transform.position).sqrMagnitude <= 1.0f)
                             {
                                 StateBot = StateBot.Inspection;
                                 _inspectionTimeRemaining.AddTimeRemaining();
                             }
                         }
-                    } 
+                    }
                 }
 
-                if(Vision.VisionM(transform, Target))
+                if (Vision.VisionM(transform, Target))
                 {
                     StateBot = StateBot.Detected;
                 }
@@ -206,5 +206,3 @@ namespace FirstShooter
         #endregion
     }
 }
-
-

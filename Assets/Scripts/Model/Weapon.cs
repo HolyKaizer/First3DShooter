@@ -19,9 +19,9 @@ namespace FirstShooter
 
 		[SerializeField] protected Transform _barrel;
 		[SerializeField] protected float _force = 1000.0f;
-		[SerializeField] protected float _rechergeTime = 0.2f;
+		[SerializeField] protected float _rechargeTime = 0.2f;
 
-		private Queue<Clip> _clips = new Queue<Clip>();
+		private readonly Queue<Clip> _clips = new Queue<Clip>();
 		protected ObjectPool _ammunitionPool;
 
 		protected bool _isReady = true;
@@ -43,7 +43,7 @@ namespace FirstShooter
 		{
 			_ammunitionPool = new ObjectPool(Ammunition, _maxCountAmmunition, true);
 
-			_attackRateTimeRemaining = new TimeRemaining(ReadyShoot, _rechergeTime);
+			_attackRateTimeRemaining = new TimeRemaining(ReadyShoot, _rechargeTime);
             
 			for (var i = 0; i <= _countClip; i++)
 			{

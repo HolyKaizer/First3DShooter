@@ -21,6 +21,7 @@ namespace FirstShooter
 
             if (Hp > 0)
             {
+                transform.Rotate(Vector3.up, Space.World);
                 Hp -= info.Damage;
             }
 

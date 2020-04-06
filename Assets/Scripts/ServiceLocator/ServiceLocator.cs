@@ -8,7 +8,7 @@ namespace FirstShooter
     {
         #region Fields
 
-        private static readonly Dictionary<Type, object> _servicecontainer = 
+        private static readonly Dictionary<Type, object> _serviceContainer = 
             new Dictionary<Type, object>();
 
         #endregion
@@ -20,15 +20,15 @@ namespace FirstShooter
         {
             var typeValue = value.GetType();
 
-            if (!_servicecontainer.ContainsKey(typeValue))
+            if (!_serviceContainer.ContainsKey(typeValue))
             {
-                _servicecontainer[typeValue] = value;
+                _serviceContainer[typeValue] = value;
             } 
         }
  
         public static T Resolve<T>()
         {
-            return (T)_servicecontainer[typeof(T)];
+            return (T)_serviceContainer[typeof(T)];
         }
 
         #endregion

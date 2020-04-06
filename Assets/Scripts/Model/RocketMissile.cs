@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
-using System;
 
 
 namespace FirstShooter
 {
-    public sealed class RocketMissle : Ammunition
+    public sealed class RocketMissile : Ammunition
     {
         #region Fields
 
@@ -13,7 +12,7 @@ namespace FirstShooter
 
         #endregion
 
-
+        
         #region UnityMethods
 
         private void OnCollisionEnter(Collision collision)

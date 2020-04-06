@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 
 namespace FirstShooter
@@ -8,8 +9,8 @@ namespace FirstShooter
         #region Fields
 
         public float Hp = 100.0f;
+        [SerializeField] protected float _timeToDestroy = 10.0f;
         protected bool _isDead = false;
-        protected float _timeToDestroy = 10.0f;
 
         #endregion
 

@@ -9,11 +9,11 @@ namespace FirstShooter
         #region Fields
 
         [SerializeField] private float _speed = 11;
-        [SerializeField] private float _batteryChargeMax;
+        [SerializeField] private float _batteryChargeMax = 0.0f;
 
-        private Light _light;
-        private Transform _goFollow;
-        private Vector3 _vecOffset;
+        private Light _light = null;
+        private Transform _goFollow = null;
+        private Vector3 _vecOffset = Vector3.zero;
 
         #endregion
 
@@ -32,8 +32,10 @@ namespace FirstShooter
             base.Awake();
 
             _light = GetComponent<Light>();
-
-            _goFollow = Camera.main.transform;
+            
+            if (Camera.main != null)
+                _goFollow = Camera.main.transform;
+            
             _vecOffset = Position - _goFollow.position;
 
             BatteryChargeCurrent = _batteryChargeMax;
