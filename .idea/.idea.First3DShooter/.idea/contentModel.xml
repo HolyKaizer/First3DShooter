@@ -91,11 +91,13 @@
           </e>
           <e p="Enums" t="Include">
             <e p="AmmunitionType.cs" t="Include" />
+            <e p="CollisionType.cs" t="Include" />
             <e p="FlashLightActiveType.cs" t="Include" />
             <e p="MouseButton.cs" t="Include" />
             <e p="StateBot.cs" t="Include" />
           </e>
           <e p="Helper" t="Include">
+            <e p="Extensions.cs" t="Include" />
             <e p="GameplayData.cs" t="Include" />
             <e p="InfoCollision.cs" t="Include" />
             <e p="ObjectPool.cs" t="Include" />
@@ -113,6 +115,7 @@
             <e p="ITimeRemaining.cs" t="Include" />
           </e>
           <e p="Manager" t="Include">
+            <e p="StringManager.cs" t="Include" />
             <e p="UiInterface.cs" t="Include" />
           </e>
           <e p="Model" t="Include">
@@ -121,18 +124,24 @@
               <e p="Bot.cs" t="Include" />
               <e p="HeadBot.cs" t="Include" />
               <e p="Patrol.cs" t="Include" />
+              <e p="PatrolPoint.cs" t="Include" />
               <e p="Vision.cs" t="Include" />
             </e>
             <e p="Aim.cs" t="Include" />
             <e p="Ammunition.cs" t="Include" />
+            <e p="AmmunitionPickup.cs" t="Include" />
             <e p="AnotherAim.cs" t="Include" />
             <e p="BaseAim.cs" t="Include" />
             <e p="BaseObjectScene.cs" t="Include" />
+            <e p="BaseTriggerableObject.cs" t="Include" />
             <e p="Bullet.cs" t="Include" />
             <e p="Clip.cs" t="Include" />
             <e p="FlashLightModel.cs" t="Include" />
             <e p="Gun.cs" t="Include" />
+            <e p="MedKit.cs" t="Include" />
+            <e p="Mine.cs" t="Include" />
             <e p="MoveableBox.cs" t="Include" />
+            <e p="PlayerHealth.cs" t="Include" />
             <e p="RocketLauncher.cs" t="Include" />
             <e p="RocketMissile.cs" t="Include" />
             <e p="Wall.cs" t="Include" />
@@ -147,6 +156,7 @@
             <e p="AimUiText.cs" t="Include" />
             <e p="FlashLightUiBar.cs" t="Include" />
             <e p="FlashLightUiText.cs" t="Include" />
+            <e p="PlayerCurrentHPText.cs" t="Include" />
             <e p="SelectionObjMessageUi.cs" t="Include" />
             <e p="WeaponUiText.cs" t="Include" />
           </e>

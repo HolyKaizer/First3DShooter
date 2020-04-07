@@ -8,6 +8,7 @@ namespace FirstShooter
         #region Fields
 
         public event Action<InfoCollision> OnApplyDamageChange;
+        public event Action<InfoCollision> OnHealingChange;
 
         #endregion
 
@@ -16,7 +17,14 @@ namespace FirstShooter
 
         public void CollisionEnter(InfoCollision collisionInfo)
         {
-            OnApplyDamageChange?.Invoke(collisionInfo);
+            if (collisionInfo.CollisionType == CollisionType.DamageDealt)
+            {
+                OnApplyDamageChange?.Invoke(collisionInfo);
+            }
+            else if (collisionInfo.CollisionType == CollisionType.Healing)
+            {
+                OnHealingChange?.Invoke(collisionInfo);
+            }
         }
 
         #endregion

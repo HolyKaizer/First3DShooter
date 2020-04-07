@@ -1,5 +1,6 @@
 ﻿namespace FirstShooter
 {
+	[System.Serializable]
 	public enum AmmunitionType
 	{
 		None = 0,

@@ -5,6 +5,17 @@ namespace FirstShooter
 {
     public sealed class RocketLauncher : Weapon
     {
+        #region UnityMethods
+
+        protected override void Awake()
+        {
+            base.Awake();
+            AmmunitionTypes = new[] {AmmunitionType.Rpg};
+        }
+
+        #endregion
+        
+        
         #region Methods
 
         public override void Fire()

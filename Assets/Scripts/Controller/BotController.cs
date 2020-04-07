@@ -9,9 +9,9 @@ namespace FirstShooter
     {
         #region Fields
 
-        private readonly int _countBot = 5;
+        private readonly int _countBot = 3;
         private readonly HashSet<Bot> _botList = new HashSet<Bot>();
-
+        
         #endregion
 
 
@@ -21,10 +21,12 @@ namespace FirstShooter
         {
             for (int index = 0; index < _countBot; index++)
             {
+                var patrol = new Patrol(index + 1);
                 var tempBot = Object.Instantiate(ServiceLocatorMonoBehaviour.GetService<ReferenceHolder>().Bot,
-                                                Patrol.GenericPoint(ServiceLocatorMonoBehaviour.GetService<CharacterController>().transform),
-                                                Quaternion.identity);
+                                                 patrol.GetNextPointInPatrolPath(),
+                                                 Quaternion.identity);
                 tempBot.Agent.avoidancePriority = index;
+                tempBot.PathIndex = index + 1;
                 tempBot.Target = ServiceLocatorMonoBehaviour.GetService<CharacterController>().transform;
                 AddBotToList(tempBot);
             }

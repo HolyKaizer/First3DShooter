@@ -65,7 +65,7 @@ namespace FirstShooter
 			_isReady = true;
 		}
 
-		protected void AddClip(Clip clip)
+		public void AddClip(Clip clip)
 		{
 			_clips.Enqueue(clip);
 		}

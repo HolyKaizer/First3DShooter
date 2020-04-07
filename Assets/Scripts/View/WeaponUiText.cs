@@ -10,7 +10,7 @@ namespace FirstShooter
         #region Fields
 
         private Text _text;
-        private AimUiText aimUiText;
+        private AimUiText _aimUiText;
 
         #endregion
 
