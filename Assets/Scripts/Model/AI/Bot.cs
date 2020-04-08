@@ -6,23 +6,26 @@ using UnityEngine.AI;
 namespace FirstShooter
 {
     [RequireComponent(typeof(NavMeshAgent))]
-    public sealed class Bot : BaseObjectScene, IExecute
+    public sealed class Bot : BaseObjectScene, IExecute, ICollision
     {
         #region Fields
 
         public event Action<Bot> OnDieChange;
 
-        public float Hp = 100;
         public Vision Vision;
-        public Weapon Weapon; //TODO: with different weapons
+        public Weapon Weapon;
+        public float Hp = 100;
 
         [SerializeField] private float _timeToDestroy = 10.0f;
-
-        private float _waitTime = 3;
-        private StateBot _stateBot;
+        
+        private Patrol _patrol; 
         private Vector3 _point;
-        private float _stoppingDistance = 2.0f;
         private ITimeRemaining _inspectionTimeRemaining;
+        private StateBot _stateBot;
+        
+        private float _waitOnPointTime = 3;
+        private float _stoppingDistance = 2.0f;
+        private int _pathIndex;
 
         #endregion
 
@@ -31,6 +34,16 @@ namespace FirstShooter
 
         public Transform Target { get; set; }
         public NavMeshAgent Agent { get; private set; }
+
+        public int PathIndex
+        {
+            get => _pathIndex;
+            set
+            {
+                _pathIndex = value;
+                _patrol = new Patrol(value);
+            }
+        }
 
         private StateBot StateBot
         {
@@ -72,27 +85,44 @@ namespace FirstShooter
         {
             base.Awake();
 
+            _patrol = new Patrol(PathIndex);
             Agent = GetComponent<NavMeshAgent>();
-            _inspectionTimeRemaining = new TimeRemaining(ResetStateBot, _waitTime);
+            _inspectionTimeRemaining = new TimeRemaining(ResetStateBot, _waitOnPointTime);
         }
 
         private void OnEnable()
         {
             var bodyBot = GetComponentInChildren<BodyBot>();
-            if (bodyBot != null) bodyBot.OnApplyDamageChange += CollisionEnter;
+            if (bodyBot != null)
+            {
+                bodyBot.OnApplyDamageChange += CollisionEnter;
+                bodyBot.OnHealingChange += CollisionEnter;
+            }
 
             var headBot = GetComponentInChildren<HeadBot>();
-            if (headBot != null) headBot.OnApplyDamageChange += CollisionEnter;
+            if (headBot != null)
+            {
+                headBot.OnApplyDamageChange += CollisionEnter;
+                headBot.OnHealingChange += CollisionEnter;
+            }
 
         }
 
         private void OnDisable()
         {
             var bodyBot = GetComponentInChildren<BodyBot>();
-            if (bodyBot != null) bodyBot.OnApplyDamageChange -= CollisionEnter;
+            if (bodyBot != null)
+            {
+                bodyBot.OnApplyDamageChange -= CollisionEnter;
+                bodyBot.OnHealingChange -= CollisionEnter;
+            }
 
             var headBot = GetComponentInChildren<HeadBot>();
-            if (headBot != null) headBot.OnApplyDamageChange -= CollisionEnter;
+            if (headBot != null)
+            {
+                headBot.OnApplyDamageChange -= CollisionEnter;
+                headBot.OnHealingChange -= CollisionEnter;
+            }
         }
 
         #endregion
@@ -113,7 +143,7 @@ namespace FirstShooter
                         if (StateBot != StateBot.Patrol)
                         {
                             StateBot = StateBot.Patrol;
-                            _point = Patrol.GenericPoint(transform);
+                            _point = _patrol.GetNextPointInPatrolPath();
                             MovePoint(_point);
                         }
                         else
@@ -141,14 +171,17 @@ namespace FirstShooter
 
                 if (Vision.VisionM(transform, Target))
                 {
+                    _point = Target.position;
+                    MovePoint(_point);
                     Weapon.Fire();
                 }
                 else
                 {
-                    MovePoint(Target.position);
+                    Agent.stoppingDistance = 0.0f;
+                    MovePoint(transform.position);
+                    StateBot = StateBot.Inspection;
+                    _inspectionTimeRemaining.AddTimeRemaining();
                 }
-
-                //todo - Потеря персонажа 
             }
         }
 
@@ -159,16 +192,22 @@ namespace FirstShooter
 
         public void CollisionEnter(InfoCollision collisionInfo)
         {
-            if (Hp > 0)
+            if (collisionInfo.CollisionType == CollisionType.DamageDealt)
             {
-                Hp -= collisionInfo.Damage;
-            }
+                if (Hp > 0)
+                {
+                    Hp -= collisionInfo.Damage;
+                }
 
-            if (Hp <= 0)
+                if (Hp <= 0)
+                {
+                    Die(collisionInfo);
+                }
+            }
+            else if (collisionInfo.CollisionType == CollisionType.Healing)
             {
-                Die(collisionInfo);
+                Hp += collisionInfo.Damage;
             }
-
         }
 
         private void Die(InfoCollision info)

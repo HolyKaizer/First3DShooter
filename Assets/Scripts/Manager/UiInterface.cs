@@ -11,6 +11,7 @@ namespace FirstShooter
         private static FlashLightUiBar _flashLightUiBar;
         private static WeaponUiText _weaponUiText;
         private static SelectionObjMessageUi _selectionObjMessageUi;
+        private static PlayerCurrentHpText _playerCurrentHpText;
 
         #endregion
 
@@ -62,6 +63,18 @@ namespace FirstShooter
                     _selectionObjMessageUi = Object.FindObjectOfType<SelectionObjMessageUi>();
                 }
                 return _selectionObjMessageUi;
+            }
+        }
+
+        public static PlayerCurrentHpText PlayerCurrentHpText
+        {
+            get
+            {
+                if (!_playerCurrentHpText)
+                {
+                    _playerCurrentHpText = Object.FindObjectOfType<PlayerCurrentHpText>();
+                }
+                return _playerCurrentHpText;
             }
         }
 
