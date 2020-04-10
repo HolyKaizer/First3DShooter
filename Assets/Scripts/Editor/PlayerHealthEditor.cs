@@ -12,6 +12,7 @@ namespace FirstShooter.Editor
         private const int MAX_PLAYER_HP = 100;
         private int _hp = MAX_PLAYER_HP;
         private int _maxHp = MAX_PLAYER_HP;
+        
         #endregion
         
         
@@ -24,8 +25,6 @@ namespace FirstShooter.Editor
             _maxHp = EditorGUILayout.IntSlider("Max player hp", _maxHp, 1, MAX_PLAYER_HP);
             _hp = EditorGUILayout.IntSlider("Start player hp", _hp, 1, _maxHp);
 
-            playerHealthTarget.MaxHp = _maxHp;
-            playerHealthTarget.Hp = _hp;
 
             var isButtonPressed = GUILayout.Button("Generate random player hp");
 
@@ -33,10 +32,11 @@ namespace FirstShooter.Editor
             {
                 _maxHp = Random.Range(1, MAX_PLAYER_HP);
                 _hp = Random.Range(1, _maxHp);
-                
-                playerHealthTarget.MaxHp = _maxHp;
-                playerHealthTarget.Hp = _hp;
             }
+            
+            playerHealthTarget.MaxHp = _maxHp;
+            playerHealthTarget.Hp = _hp;
+
         }
 
         #endregion

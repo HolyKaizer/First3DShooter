@@ -29,10 +29,10 @@
   <component name="ChangesViewManager" show_ignored="true" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Controller/Inventory.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
+            <state relative-caret-position="647">
               <caret line="47" column="42" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="42" />
               <folding>
                 <marker date="1586443491380" expanded="true" signature="6:120" ph="..." />
@@ -58,11 +58,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Model/AI/Patrol.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="455">
-              <caret line="40" selection-start-line="40" selection-end-line="40" />
+            <state relative-caret-position="76">
+              <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
               <folding>
                 <marker date="1586502333838" expanded="true" signature="6:59" ph="..." />
                 <marker date="1586502333838" expanded="true" signature="84:982" ph="{...}" />
@@ -394,7 +394,7 @@
       <workItem from="1586122423626" duration="10370000" />
       <workItem from="1586240086201" duration="16425000" />
       <workItem from="1586439002509" duration="10958000" />
-      <workItem from="1586501442724" duration="5335000" />
+      <workItem from="1586501442724" duration="5600000" />
     </task>
     <task id="LOCAL-00001" summary="Add Rider support and some bug fixes">
       <created>1586159533122</created>
@@ -407,7 +407,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43595000" />
+    <option name="totallyTimeSpent" value="43860000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -420,7 +420,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="23" width="1916" height="986" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23692636" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -438,9 +437,9 @@
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.3277405" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Unit Tests" order="12" weight="0.3277405" />
-      <window_info anchor="bottom" id="Terminal" order="13" sideWeight="0.4994664" weight="0.3277405" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="13" sideWeight="0.4994664" visible="true" weight="0.3277405" />
       <window_info anchor="bottom" id="Event Log" order="14" sideWeight="0.5010672" side_tool="true" weight="0.3538634" />
-      <window_info active="true" anchor="bottom" id="Unity" order="15" sideWeight="0.49893278" visible="true" weight="0.35346755" />
+      <window_info anchor="bottom" id="Unity" order="15" sideWeight="0.49893278" weight="0.35346755" />
       <window_info anchor="bottom" id="Inspection Results" order="16" weight="0.3180291" />
       <window_info anchor="bottom" id="Build" order="17" weight="0.3290398" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -1295,25 +1294,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Model/AI/Patrol.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-          <folding>
-            <marker date="1586502333838" expanded="true" signature="6:59" ph="..." />
-            <marker date="1586502333838" expanded="true" signature="84:982" ph="{...}" />
-            <marker date="1586502333838" expanded="true" signature="117:980" ph="{...}" />
-            <marker date="1586502333838" expanded="true" signature="132:262" ph="Fields" />
-            <marker date="1586502333838" expanded="true" signature="274:542" ph="ClassLifeCycle" />
-            <marker date="1586502333838" expanded="true" signature="334:522" ph="{...}" />
-            <marker date="1586502333838" expanded="true" signature="569:974" ph="Methods" />
-            <marker date="1586502333838" expanded="true" signature="635:954" ph="{...}" />
-            <marker date="1586502333838" expanded="true" signature="701:763" ph="{...}" />
-            <marker date="1586502333838" expanded="true" signature="780:844" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Controller/BotController.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
@@ -1355,7 +1335,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Controller/Inventory.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
+        <state relative-caret-position="647">
           <caret line="47" column="42" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="42" />
           <folding>
             <marker date="1586443491380" expanded="true" signature="6:120" ph="..." />
@@ -1376,6 +1356,25 @@
             <marker date="1586443491380" expanded="true" signature="1839:2339" ph="{...}" />
             <marker date="1586443491380" expanded="true" signature="1958:2325" ph="{...}" />
             <marker date="1586443491380" expanded="true" signature="2024:2307" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Model/AI/Patrol.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+          <folding>
+            <marker date="1586502333838" expanded="true" signature="6:59" ph="..." />
+            <marker date="1586502333838" expanded="true" signature="84:982" ph="{...}" />
+            <marker date="1586502333838" expanded="true" signature="117:980" ph="{...}" />
+            <marker date="1586502333838" expanded="true" signature="132:262" ph="Fields" />
+            <marker date="1586502333838" expanded="true" signature="274:542" ph="ClassLifeCycle" />
+            <marker date="1586502333838" expanded="true" signature="334:522" ph="{...}" />
+            <marker date="1586502333838" expanded="true" signature="569:974" ph="Methods" />
+            <marker date="1586502333838" expanded="true" signature="635:954" ph="{...}" />
+            <marker date="1586502333838" expanded="true" signature="701:763" ph="{...}" />
+            <marker date="1586502333838" expanded="true" signature="780:844" ph="{...}" />
           </folding>
         </state>
       </provider>

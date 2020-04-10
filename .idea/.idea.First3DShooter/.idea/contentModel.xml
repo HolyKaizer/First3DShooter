@@ -92,7 +92,7 @@
           </e>
           <e p="Editor" t="Include">
             <e p="EnemySpawnerWindow.cs" t="Include" />
-            <e p="GameControllerEditor.cs" t="Include" />
+            <e p="PlayerHealthEditor.cs" t="Include" />
           </e>
           <e p="Enums" t="Include">
             <e p="AmmunitionType.cs" t="Include" />
