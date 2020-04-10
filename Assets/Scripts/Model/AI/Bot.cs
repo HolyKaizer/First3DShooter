@@ -87,7 +87,9 @@ namespace FirstShooter
 
             _patrol = new Patrol(PathIndex);
             Agent = GetComponent<NavMeshAgent>();
+            Agent.avoidancePriority = PathIndex;
             _inspectionTimeRemaining = new TimeRemaining(ResetStateBot, _waitOnPointTime);
+            
         }
 
         private void OnEnable()

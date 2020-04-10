@@ -13,9 +13,9 @@ namespace FirstShooter
 
 		[HideInInspector] public AmmunitionType[] AmmunitionTypes = { AmmunitionType.Bullet };
 
-		[SerializeField] private int _maxCountAmmunition = 40;
-		[SerializeField] private int _minCountAmmunition = 20;
-		[SerializeField] private int _countClip = 5;
+		[SerializeField] protected int _maxCountAmmunition = 40;
+		[SerializeField] protected int _minCountAmmunition = 20;
+		[SerializeField] protected int _countClip = 5;
 
 		[SerializeField] protected Transform _barrel;
 		[SerializeField] protected float _force = 1000.0f;

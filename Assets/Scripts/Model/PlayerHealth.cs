@@ -9,8 +9,8 @@ namespace FirstShooter
     {
         #region Fields
 
-        [SerializeField] private float _hp;
-        [SerializeField] private float _maxHp;
+        public float Hp;
+        public float MaxHp;
 
         #endregion
 
@@ -23,7 +23,7 @@ namespace FirstShooter
             
             
             UiInterface.PlayerCurrentHpText.SetActive(true);
-            UiInterface.PlayerCurrentHpText.Text = ((int)_hp).ToString();
+            UiInterface.PlayerCurrentHpText.Text = ((int)Hp).ToString();
         }
 
         #endregion
@@ -50,31 +50,31 @@ namespace FirstShooter
 
         private void GetDamage(float damage)
         {
-            if (_hp > 0)
+            if (Hp > 0)
             {
-                _hp -= damage;
+                Hp -= damage;
             }
 
-            if (_hp <= 0)
+            if (Hp <= 0)
             {
                 Die();
             }
 
-            ServiceLocator.Resolve<Inventory>().Hp = (int)_hp;
+            ServiceLocator.Resolve<Inventory>().Hp = (int)Hp;
         }
         
         private void Heal(float amount)
         {
-            if (_hp + amount > _maxHp)
+            if (Hp + amount > MaxHp)
             {
-                _hp = _maxHp;
+                Hp = MaxHp;
             }
             else
             {
-                _hp += amount;
+                Hp += amount;
             }
 
-            ServiceLocator.Resolve<Inventory>().Hp = (int)_hp;
+            ServiceLocator.Resolve<Inventory>().Hp = (int)Hp;
         }
 
         private void Die()

@@ -10,10 +10,7 @@ namespace FirstShooter
         #region Fields
         
         private readonly PatrolPoint[] _listPoint;
-        private int _indexCurPoint = 0;
-        private int _minDistance = 25;
-        private int _maxDistance = 150;
-        private int _pathIndex = 0;
+        private int _indexCurPoint;
 
         #endregion 
 
@@ -22,10 +19,8 @@ namespace FirstShooter
 
         public Patrol(int pathIndex)
         {
-            _pathIndex = pathIndex;
-            
             var tempPoints = Object.FindObjectsOfType<PatrolPoint>();
-            _listPoint = tempPoints.Where( point => point.PatrolBotIndex == _pathIndex).ToArray();
+            _listPoint = tempPoints.Where( point => point.PatrolBotIndex == pathIndex).ToArray();
         }
 
         #endregion

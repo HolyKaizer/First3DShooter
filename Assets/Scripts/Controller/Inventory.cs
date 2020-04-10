@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using Object = UnityEngine.Object;
 
 
 namespace FirstShooter
@@ -7,11 +11,11 @@ namespace FirstShooter
     {
         #region Fields
 
-        public Weapon[] Weapons => _weapons;
+        public List<Weapon>  Weapons => _weapons;
         
-        private Weapon[] _weapons = new Weapon[5];
+        private List<Weapon> _weapons;
 
-        private int _currentWeaponIndex = 0;
+        private int _currentWeaponIndex;
         private int _hp;
         
         #endregion
@@ -41,7 +45,7 @@ namespace FirstShooter
         {
             _weapons = ServiceLocatorMonoBehaviour.
                         GetService<CharacterController>().
-                         GetComponentsInChildren<Weapon>();
+                         GetComponentsInChildren<Weapon>().ToList();
             foreach (var weapon in Weapons)
             {
                 weapon.IsVisible = false;
@@ -64,12 +68,17 @@ namespace FirstShooter
 
         public void RemoveWeapon(Weapon weapon)
         {
+            _weapons.Remove(weapon);
+        }
 
+        public void AddWeapon(Weapon weapon)
+        {
+            _weapons.Add(weapon);
         }
 
         public void AddClipsToWeapon(AmmunitionType ammoType, Clip[] clips)
         {
-            for(int index = 0; index < _weapons.Length; index++)
+            for(int index = 0; index < _weapons.Count; index++)
             {
                 var weapon = _weapons[index];
                 if (weapon.AmmunitionTypes[0] == ammoType)
