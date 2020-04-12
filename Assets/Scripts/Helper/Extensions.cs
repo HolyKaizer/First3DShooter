@@ -25,7 +25,16 @@ namespace FirstShooter
         {
             return Boolean.TryParse(self, out var res) && res;
         }
-
+        
+        public static float TrySingle(this string self)
+        {
+            if (Single.TryParse(self, out var res))
+            {
+                return res;
+            }
+            return 0;
+        }
+        
         public static T AddList<T>(this T self, List<T> list)
         {
             list.Add(self);
