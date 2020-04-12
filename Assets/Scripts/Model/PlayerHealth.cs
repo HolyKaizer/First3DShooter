@@ -9,26 +9,13 @@ namespace FirstShooter
     {
         #region Fields
 
+        public Action<int> OnHealthChange = delegate(int i) {  };
         public float Hp;
         public float MaxHp;
 
         #endregion
+ 
 
-
-        #region UnityMethods
-
-        protected override void Awake()
-        {
-            base.Awake();
-            
-            
-            UiInterface.PlayerCurrentHpText.SetActive(true);
-            UiInterface.PlayerCurrentHpText.Text = ((int)Hp).ToString();
-        }
-
-        #endregion
-        
-        
         #region ICollision
 
         public void CollisionEnter(InfoCollision infoCollision)
@@ -59,8 +46,8 @@ namespace FirstShooter
             {
                 Die();
             }
-
-            ServiceLocator.Resolve<Inventory>().Hp = (int)Hp;
+            
+            OnHealthChange.Invoke((int)Hp);
         }
         
         private void Heal(float amount)
@@ -74,7 +61,7 @@ namespace FirstShooter
                 Hp += amount;
             }
 
-            ServiceLocator.Resolve<Inventory>().Hp = (int)Hp;
+            OnHealthChange.Invoke((int)Hp);
         }
 
         private void Die()

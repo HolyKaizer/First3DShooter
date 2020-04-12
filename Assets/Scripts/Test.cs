@@ -1,12 +1,17 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEditor.SceneManagement;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
-namespace FirstShooter
+
+namespace FirstShooter.Editor
 {
-    public class Test : MonoBehaviour
+    public sealed class TestWindow : EditorWindow
     {
-        private void Start()
+        private void OnGUI()
         {
-            FindObjectOfType<FlashLightModel>().Layer = 2;
+            var isButtonPressed = GUILayout.Button("Spawn enemy");
         }
+        
     }
 }

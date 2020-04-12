@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 
 namespace FirstShooter
@@ -40,6 +41,7 @@ namespace FirstShooter
             ServiceLocator.SetService(new SelectionController());
             ServiceLocator.SetService(new CatchController());
             ServiceLocator.SetService(new BotController());
+            ServiceLocator.SetService(new HealthController());
 
             _executeControllers = new IExecute[6];
 
@@ -64,7 +66,9 @@ namespace FirstShooter
         public void Initialization()
         {
             UiInterface.LightUiBar.SetActive(false);
-
+            UiInterface.PlayerCurrentHpText.SetActive(true);
+            
+            ServiceLocator.Resolve<HealthController>().Initialization();
             foreach (var controller in _executeControllers)
             {
                 if (controller is IInitialization initialization)
@@ -79,6 +83,7 @@ namespace FirstShooter
             ServiceLocator.Resolve<SelectionController>().On();
             ServiceLocator.Resolve<PlayerController>().On();
             ServiceLocator.Resolve<BotController>().On();
+            ServiceLocator.Resolve<HealthController>().On();
         }
 
         #endregion

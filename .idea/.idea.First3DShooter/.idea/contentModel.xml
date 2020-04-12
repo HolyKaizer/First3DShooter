@@ -79,6 +79,7 @@
             <e p="Controllers.cs" t="Include" />
             <e p="FlashLightController.cs" t="Include" />
             <e p="GameController.cs" t="Include" />
+            <e p="HealthController.cs" t="Include" />
             <e p="InputController.cs" t="Include" />
             <e p="Inventory.cs" t="Include" />
             <e p="PlayerController.cs" t="Include" />

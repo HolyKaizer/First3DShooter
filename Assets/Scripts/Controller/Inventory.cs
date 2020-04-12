@@ -16,7 +16,6 @@ namespace FirstShooter
         private List<Weapon> _weapons;
 
         private int _currentWeaponIndex;
-        private int _hp;
         
         #endregion
 
@@ -24,17 +23,6 @@ namespace FirstShooter
         #region Properties 
 
         public FlashLightModel FlashLight { get; private set; }
-
-        public int Hp
-        {
-            get => _hp;
-
-            set
-            {
-                _hp = value;
-                UiInterface.PlayerCurrentHpText.Text = _hp.ToString();
-            }
-        }
 
         #endregion
 
