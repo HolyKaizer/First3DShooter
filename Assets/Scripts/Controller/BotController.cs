@@ -9,9 +9,8 @@ namespace FirstShooter
     {
         #region Fields
 
-        private readonly int _countBot = 5;
         private readonly HashSet<Bot> _botList = new HashSet<Bot>();
-
+        
         #endregion
 
 
@@ -19,14 +18,16 @@ namespace FirstShooter
 
         public void Initialization()
         {
-            for (int index = 0; index < _countBot; index++)
+            var enemyTarget = Object.FindObjectOfType<CharacterController>().transform;
+            var botList = Object.FindObjectsOfType<Bot>();
+            
+            for (int i = 0; i < botList.Length; i++)
             {
-                var tempBot = Object.Instantiate(ServiceLocatorMonoBehaviour.GetService<ReferenceHolder>().Bot,
-                                                Patrol.GenericPoint(ServiceLocatorMonoBehaviour.GetService<CharacterController>().transform),
-                                                Quaternion.identity);
-                tempBot.Agent.avoidancePriority = index;
-                tempBot.Target = ServiceLocatorMonoBehaviour.GetService<CharacterController>().transform;
-                AddBotToList(tempBot);
+                var bot = botList[i];
+                
+                bot.PathIndex = i + 1;
+                bot.Target = enemyTarget;
+                AddBotToList(bot);
             }
         }
 
@@ -51,7 +52,7 @@ namespace FirstShooter
 
         #region Methods
 
-        private void AddBotToList(Bot bot)
+        public void AddBotToList(Bot bot)
         {
             if (!_botList.Contains(bot))
             {

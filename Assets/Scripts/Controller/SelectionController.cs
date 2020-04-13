@@ -16,7 +16,6 @@ namespace FirstShooter
         private readonly LayerMask _selectableLayerMask;
 
         private bool _nullString = false;
-        private bool _isSelectedObj = false;
 
         #endregion
 
@@ -52,28 +51,7 @@ namespace FirstShooter
                 UiInterface.SelectionObjMessageUi.Text = string.Empty;
                 _nullString = true;
                 _dedicateObj = null;
-                _isSelectedObj = false;
             }
-
-            if( _isSelectedObj)
-            {
-                //todo : Action on object
-
-                switch (_selectedObj as BaseObjectScene)
-                {
-                    case Weapon aim:
-
-                        // В инвентарь
-                        //Inventory.AddWeapon(aim)
-
-                        break;
-                    case Wall wall:
-                        break;
-
-                    default:
-                        break;
-                }
-            } 
         }
 
         #endregion
@@ -89,12 +67,10 @@ namespace FirstShooter
             if(_selectedObj != null)
             {
                 UiInterface.SelectionObjMessageUi.Text = _selectedObj.GetMessage();
-                _isSelectedObj = true;
             }
             else
             {
                 UiInterface.SelectionObjMessageUi.Text = string.Empty;
-                _isSelectedObj = false;
             }
             _dedicateObj = obj;
         }

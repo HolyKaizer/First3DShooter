@@ -13,7 +13,7 @@ namespace FirstShooter
         private readonly Vector2 _center;
         private readonly float _dedicateCatchDistance = 4.0f;
 
-        private ICatchaleObj _catchedObj;
+        private ICatchaleObj _catchedObj = null;
         private bool _isCurrentlyCarryObj = false;
 
         #endregion
@@ -29,7 +29,7 @@ namespace FirstShooter
         }
 
         #endregion
-
+        
 
         #region Methods
 
@@ -41,17 +41,26 @@ namespace FirstShooter
                 return;
             }
             if (!Physics.Raycast(_mainCamera.ScreenPointToRay(_center),
-                                out var hit,
-                                _dedicateCatchDistance,
-                                _catchableLayerMask))
+                                    out var hit,
+                                    _dedicateCatchDistance,
+                                    _catchableLayerMask)) 
                 return;
 
             _catchedObj = hit.collider.gameObject.GetComponent<ICatchaleObj>();
 
             if (_catchedObj != null)
             {
-                _isCurrentlyCarryObj = true;
-                _catchedObj.CatchObject();
+                switch (_catchedObj)
+                {
+                    case Weapon aim:
+                        ServiceLocator.Resolve<Inventory>().AddWeapon(aim);
+                        break;
+
+                    default:
+                        _isCurrentlyCarryObj = true;
+                        _catchedObj.CatchObject();
+                        break;
+                }
             }
         }
 

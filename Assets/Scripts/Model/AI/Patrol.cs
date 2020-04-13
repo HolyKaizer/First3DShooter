@@ -1,24 +1,44 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 using UnityEngine.AI;
 
 
 namespace FirstShooter
 {
-    public static class Patrol
+    public sealed class Patrol
     {
+        #region Fields
+        
+        private readonly PatrolPoint[] _listPoint;
+        private int _indexCurPoint;
+
+        #endregion 
+
+
+        #region ClassLifeCycle
+
+        public Patrol(int pathIndex)
+        {
+            var tempPoints = Object.FindObjectsOfType<PatrolPoint>();
+            _listPoint = tempPoints.Where( point => point.PatrolBotIndex == pathIndex).ToArray();
+        }
+
+        #endregion
+        
+        
         #region Methods
 
-        public static Vector3 GenericPoint(Transform agent)
+        public Vector3 GetNextPointInPatrolPath()
         {
-            //todo перемещение по точкам
-            Vector3 result;
-
-            var dis = Random.Range(5, 50);
-            var randomPoint = Random.insideUnitSphere * dis;
-
-            NavMesh.SamplePosition(agent.position + randomPoint,
-                out var hit, dis, NavMesh.AllAreas);
-            result = hit.position;
+            if (_indexCurPoint < _listPoint.Length - 1)
+            {
+                _indexCurPoint++;
+            }
+            else
+            {
+                _indexCurPoint = 0;
+            }
+            var result = _listPoint[_indexCurPoint].transform.position;
 
             return result;
         }
