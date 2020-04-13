@@ -25,7 +25,7 @@ namespace FirstShooter
         {
             _mainCamera = Camera.main;
             _center = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
-            _catchableLayerMask = ServiceLocatorMonoBehaviour.GetService<GameController>().GameplayData.SelecatbleLayerMask;
+            _catchableLayerMask = ServiceLocatorMonoBehaviour.GetService<GameController>().GameplayData.SelecatableLayerMask;
         }
 
         #endregion
