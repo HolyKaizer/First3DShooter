@@ -94,6 +94,7 @@
           </e>
           <e p="Editor" t="Include">
             <e p="EnemySpawnerWindow.cs" t="Include" />
+            <e p="MedKitSpawnerWindow.cs" t="Include" />
             <e p="PlayerHealthEditor.cs" t="Include" />
           </e>
           <e p="Enums" t="Include">
@@ -173,7 +174,7 @@
             <e p="AimUiText.cs" t="Include" />
             <e p="FlashLightUiBar.cs" t="Include" />
             <e p="FlashLightUiText.cs" t="Include" />
-            <e p="PlayerCurrentHPText.cs" t="Include" />
+            <e p="PlayerCurrentHpText.cs" t="Include" />
             <e p="SelectionObjMessageUi.cs" t="Include" />
             <e p="WeaponUiText.cs" t="Include" />
           </e>

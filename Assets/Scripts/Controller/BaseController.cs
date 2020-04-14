@@ -11,11 +11,6 @@
 
         #region Methods
 
-        ~BaseController()
-        {
-            Off();
-        }
-
         public virtual void On()
         {
             On(null);
