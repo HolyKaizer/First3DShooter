@@ -9,6 +9,6 @@ namespace FirstShooter
     {
         public LayerMask NothingLayerMask;
         public LayerMask PlayerLayerMask;
-        public LayerMask SelecatbleLayerMask;
+        public LayerMask SelecatableLayerMask;
     }
 }
