@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
@@ -64,7 +67,7 @@ namespace FirstShooter.Editor
                 var positionY = Random.Range(_minPatrolPoint.y, _maxPatrolPoint.y);
                 var positionZ = Random.Range(_minPatrolPoint.z, _maxPatrolPoint.z);
                 var pointPosition = new Vector3(positionX, positionY, positionZ);
-                
+
                 var tempPoint = Instantiate(PatrolPoint, pointPosition, Quaternion.identity, root.transform);
                 tempPoint.GetComponent<PatrolPoint>().PatrolBotIndex = _patrolIndex;
                 tempPoint.name = "PatrolPathPoint";

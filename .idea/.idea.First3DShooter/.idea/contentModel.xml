@@ -83,6 +83,7 @@
             <e p="InputController.cs" t="Include" />
             <e p="Inventory.cs" t="Include" />
             <e p="PlayerController.cs" t="Include" />
+            <e p="SaveDataRepository.cs" t="Include" />
             <e p="SelectionController.cs" t="Include" />
             <e p="TimeRemainingController" t="Include">
               <e p="TimeRemainingController.cs" t="Include" />
@@ -93,6 +94,7 @@
           </e>
           <e p="Editor" t="Include">
             <e p="EnemySpawnerWindow.cs" t="Include" />
+            <e p="MedKitSpawnerWindow.cs" t="Include" />
             <e p="PlayerHealthEditor.cs" t="Include" />
           </e>
           <e p="Enums" t="Include">
@@ -103,16 +105,19 @@
             <e p="StateBot.cs" t="Include" />
           </e>
           <e p="Helper" t="Include">
+            <e p="Crypto.cs" t="Include" />
             <e p="Extensions.cs" t="Include" />
             <e p="GameplayData.cs" t="Include" />
             <e p="InfoCollision.cs" t="Include" />
             <e p="ObjectPool.cs" t="Include" />
             <e p="ReferenceHolder.cs" t="Include" />
+            <e p="SerializableGameObject.cs" t="Include" />
             <e p="TimeRemaining.cs" t="Include" />
           </e>
           <e p="Interface" t="Include">
             <e p="ICatchaleObj.cs" t="Include" />
             <e p="ICollision.cs" t="Include" />
+            <e p="IData.cs" t="Include" />
             <e p="IExecute.cs" t="Include" />
             <e p="IInitialization.cs" t="Include" />
             <e p="IInteractableObj.cs" t="Include" />
@@ -153,6 +158,13 @@
             <e p="Wall.cs" t="Include" />
             <e p="Weapon.cs" t="Include" />
           </e>
+          <e p="SaveData" t="Include">
+            <e p="JsonData.cs" t="Include" />
+            <e p="PlayerPrefsData.cs" t="Include" />
+            <e p="SerializableXMLData.cs" t="Include" />
+            <e p="StreamData.cs" t="Include" />
+            <e p="XMLData.cs" t="Include" />
+          </e>
           <e p="ServiceLocator" t="Include">
             <e p="ServiceLocator.cs" t="Include" />
             <e p="ServiceLocatorMonoBehaviour.cs" t="Include" />
@@ -162,7 +174,7 @@
             <e p="AimUiText.cs" t="Include" />
             <e p="FlashLightUiBar.cs" t="Include" />
             <e p="FlashLightUiText.cs" t="Include" />
-            <e p="PlayerCurrentHPText.cs" t="Include" />
+            <e p="PlayerCurrentHpText.cs" t="Include" />
             <e p="SelectionObjMessageUi.cs" t="Include" />
             <e p="WeaponUiText.cs" t="Include" />
           </e>
