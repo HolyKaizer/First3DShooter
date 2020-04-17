@@ -26,7 +26,7 @@ namespace FirstShooter
             _oldParent = Transform.parent;
 
             //Calculate layer depend on layerMask
-            var selectableLayerMask = ServiceLocatorMonoBehaviour.GetService<GameController>().GameplayData.SelecatbleLayerMask.value;
+            var selectableLayerMask = ServiceLocatorMonoBehaviour.GetService<GameController>().GameplayData.SelecatableLayerMask.value;
             _selectableLayer = (int)(Math.Log10(selectableLayerMask) / Math.Log10(2));
 
             var nothingLayerMask = ServiceLocatorMonoBehaviour.GetService<GameController>().GameplayData.NothingLayerMask.value;
