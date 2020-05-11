@@ -51,6 +51,7 @@ MonoBehaviour:
   _baseDamage: 45
   Type: 2
   _explosionRadius: 3
+  _explosionForce: 1000
   _damagableMask:
     serializedVersion: 2
     m_Bits: 512
